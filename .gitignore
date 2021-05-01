@@ -6,7 +6,10 @@ com.ganji*
 *.python-version
 */xinit/*.dex
 *pydevproject
+<<<<<<< HEAD
 .hooker_driver
+=======
+>>>>>>> upstream/master
 .DS_Store
 log
 .*source/.*

@@ -1,14 +1,11 @@
-#! /Library/Frameworks/Python.framework/Versions/3.8/bin/python3
+#! /Library/Frameworks/Python.framework/Versions/3.7/bin/python3
 
 import frida
 import os
 import io
 import traceback
 import base64
-<<<<<<< HEAD
-=======
 import platform
->>>>>>> upstream/master
 
 def withColor(string, fg, bg=49):
     print("\33[0m\33[%d;%dm%s\33[0m" % (fg, bg, string))
@@ -29,18 +26,6 @@ def yellow(string):
 warn = red
 info = yellow
 
-<<<<<<< HEAD
-def readJs(filename):
-    return io.open('../js/' + filename,'r',encoding= 'utf8').read()
-
-base_jscode = readJs("base.js")
-
-radar_jscode = readJs("radar.js")
-
-jsfmt_jscode = readJs("jsfmt.js")
-
-rpc_jscode = base_jscode + radar_jscode + jsfmt_jscode + readJs("rpc.js")
-=======
 rpc_jscode = """
 function mkdirs(dirpath) {
     var FileClz = Java.use("java.io.File");
@@ -110,7 +95,6 @@ def getHookerDriverHost():
         return hookerDriver
     except Exception:
         return "-U"
->>>>>>> upstream/master
 
 class XinitFile:
     def __init__(self, filename, filepath):
@@ -133,11 +117,7 @@ def readXinitFiles():
         if os.path.isdir(filepath):
             continue
         xinitFile = XinitFile(filename, filepath)
-<<<<<<< HEAD
-        xinitFiles = xinitFiles.append(xinitFile)
-=======
         xinitFiles.append(xinitFile)
->>>>>>> upstream/master
     return xinitFiles
 
 def on_message(message, data):
@@ -146,10 +126,6 @@ def on_message(message, data):
 def attach(packageName):
     online_session = None
     online_script = None
-<<<<<<< HEAD
-    try:
-        rdev = frida.get_usb_device()
-=======
     hookerDriver = getHookerDriverHost()
     try:
         if hookerDriver != "-U":
@@ -159,7 +135,6 @@ def attach(packageName):
             rdev = frida.get_remote_device()
         else:
             rdev = frida.get_usb_device(1000)
->>>>>>> upstream/master
         online_session = rdev.attach(packageName)
         if online_session == None:
             warn("attaching fail to " + packageName)
@@ -178,13 +153,8 @@ def detach(online_session):
 
 def xinitDeploy(packageName):
     xinitFiles = readXinitFiles()
-<<<<<<< HEAD
-    if len(xinitFiles) == 0:
-        warn("deploying aborted.")
-=======
     if xinitFiles == None or len(xinitFiles) == 0:
         warn("deploying aborted. because not found any file in the path xinit.")
->>>>>>> upstream/master
         return
     online_session = None
     online_script = None
@@ -193,11 +163,7 @@ def xinitDeploy(packageName):
         for xinitFile in xinitFiles:
             dataBase64 = base64.b64encode(xinitFile.fileData()).decode()
             distPath = "/data/user/0/" + packageName + "/xinit/" + xinitFile.filename
-<<<<<<< HEAD
-            print("copying " + xinitFile.filename + " to that path " + distPath + ".")
-=======
             info("copying " + xinitFile.filename + " to that path " + distPath + ".")
->>>>>>> upstream/master
             online_script.exports.write(distPath, dataBase64)
         info("deploying xinit finished.")
     except Exception:
@@ -206,4 +172,4 @@ def xinitDeploy(packageName):
     finally:    
         detach(online_session)
         
-xinitDeploy('com.jifen.qukan')
+xinitDeploy('com.sina.news')

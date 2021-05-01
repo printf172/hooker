@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-function printStacks(androidLogClz, exceptionClz, methodName) {
-    var stackInfo = androidLogClz.getStackTraceString(exceptionClz.$new());
-    console.log(new Date().getTime()+":"+methodName);
-    console.log(stackInfo.substring(20));
-=======
 function methodInBeat(invokeId, timestamp, methodName, executor) {
 	var startTime = timestamp;
     var androidLogClz = Java.use("android.util.Log");
@@ -16,7 +10,6 @@ function methodInBeat(invokeId, timestamp, methodName, executor) {
     str += stackInfo.substring(20);
     str += ("------------endFlag:" + invokeId + ",usedtime:" + (new Date().getTime() - startTime) +"---------------\n");
 	console.log(str);
->>>>>>> upstream/master
 };
 
 Java.perform(function() {
@@ -25,16 +18,6 @@ Java.perform(function() {
     var textViewClz = Java.use("android.widget.TextView");
 
     if (textViewClz.setText) {
-<<<<<<< HEAD
-    	var setTextFunc = textViewClz.setText.overload("java.lang.CharSequence");
-    	setTextFunc.implementation = function(v0) {
-    		var clz = this.getClass().getName();
-    		var viewId = this.getId();
-            console.log("TextViewClz: " + clz);
-            console.log("ViewId: " + viewId);
-            printStacks(androidLogClz, exceptionClz, 'android.widget.TextView.setText(String:'+v0+')');
-            setTextFunc.call(this, v0);
-=======
         var setTextFunc = textViewClz.setText.overload("java.lang.CharSequence");
         setTextFunc.implementation = function(v0) {
             var startTime = new Date().getTime();
@@ -47,7 +30,6 @@ Java.perform(function() {
             var invokeId = Math.random().toString(36).slice( - 8);
             var executor = this.hashCode();
             methodInBeat(invokeId, startTime, "android.widget.TextView.setText()", executor);
->>>>>>> upstream/master
         };
     }
     if (textViewClz.getText) {
@@ -59,13 +41,9 @@ Java.perform(function() {
             console.log("TextViewClz: " + clz);
             console.log("ViewId: " + viewId);
             console.log("Text: " + editable.toString());
-<<<<<<< HEAD
-            printStacks(androidLogClz, exceptionClz, 'android.widget.TextView.getText()');
-=======
             var invokeId = Math.random().toString(36).slice( - 8);
             var executor = this.hashCode();
             methodInBeat(invokeId, startTime, "android.widget.TextView.getText()", executor);
->>>>>>> upstream/master
             return editable;
         };
     }

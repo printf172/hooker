@@ -1,4 +1,11 @@
 #!/bin/bash
+<<<<<<< HEAD
 echo "hooking $1" > log
 date | tee -ai log
 frida -U -l $1 com.jifen.qukan | tee -ai log
+=======
+HOOKER_DRIVER=$(cat ../.hooker_driver)
+echo "hooking $1" > log
+date | tee -ai log
+frida $HOOKER_DRIVER -l $1 com.jifen.qukan | tee -ai log
+>>>>>>> upstream/master

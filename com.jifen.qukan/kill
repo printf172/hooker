@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 frida-kill -U com.jifen.qukan
+=======
+#!/bin/bash
+HOOKER_DRIVER=$(cat ../.hooker_driver)
+frida-kill $HOOKER_DRIVER com.jifen.qukan
+>>>>>>> upstream/master

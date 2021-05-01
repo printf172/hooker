@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-function printStacks(androidLogClz, exceptionClz, methodName) {
-    var stackInfo = androidLogClz.getStackTraceString(exceptionClz.$new());
-    console.log(new Date().getTime() + ":" + methodName);
-    console.log(stackInfo.substring(20));
-=======
 function methodInBeat(invokeId, timestamp, methodName, executor) {
 	var startTime = timestamp;
     var androidLogClz = Java.use("android.util.Log");
@@ -16,7 +10,6 @@ function methodInBeat(invokeId, timestamp, methodName, executor) {
     str += stackInfo.substring(20);
     str += ("------------endFlag:" + invokeId + ",usedtime:" + (new Date().getTime() - startTime) +"---------------\n");
 	console.log(str);
->>>>>>> upstream/master
 };
 
 function makeClass(className) {
@@ -50,24 +43,17 @@ Java.perform(function() {
     if (textViewClz.setText) {
         var setTextFunc = textViewClz.setText.overload("java.lang.CharSequence");
         setTextFunc.implementation = function(v0) {
-<<<<<<< HEAD
-=======
         	var startTime = new Date().getTime();
->>>>>>> upstream/master
             setTextFunc.call(this, v0);
             if (isClass(this, "android.widget.EditText")) {
                 var clz = this.getClass().getName();
                 var viewId = this.getId();
                 console.log("EditTextClz: " + clz);
                 console.log("ViewId: " + viewId);
-<<<<<<< HEAD
-                printStacks(androidLogClz, exceptionClz, 'android.widget.EditText.setText(String:' + v0 + ')');
-=======
                 console.log("text: " + v0);
                 var invokeId = Math.random().toString(36).slice( - 8);
         		var executor = this.hashCode();
                 methodInBeat(invokeId, startTime, 'android.widget.EditText.setText()', executor);
->>>>>>> upstream/master
             }
         };
     }
@@ -75,10 +61,7 @@ Java.perform(function() {
     if (textViewClz.getText) {
         var getTextFunc = textViewClz.getText.overload();
         getTextFunc.implementation = function() {
-<<<<<<< HEAD
-=======
         	var startTime = new Date().getTime();
->>>>>>> upstream/master
             var editable = getTextFunc.call(this);
             if (isClass(this, "android.widget.EditText")) {
                 var clz = this.getClass().getName();
@@ -86,13 +69,9 @@ Java.perform(function() {
                 console.log("EditTextClz: " + clz);
                 console.log("ViewId: " + viewId);
                 console.log("Text: " + Java.cast(editable, charSequenceClz));
-<<<<<<< HEAD
-                printStacks(androidLogClz, exceptionClz, 'android.widget.EditText.getText()');
-=======
                 var invokeId = Math.random().toString(36).slice( - 8);
         		var executor = this.hashCode();
         		methodInBeat(invokeId, startTime, 'android.widget.EditText.getText()', executor);
->>>>>>> upstream/master
             }
             return editable;
         };
@@ -102,28 +81,17 @@ Java.perform(function() {
         var appCompatEditTextClz = Java.use("androidx.appcompat.widget.AppCompatEditText");
         var appCompatEditTextClzGetTextFunc = appCompatEditTextClz.getText.overload();
         appCompatEditTextClzGetTextFunc.implementation = function() {
-<<<<<<< HEAD
-=======
         	var startTime = new Date().getTime();
->>>>>>> upstream/master
             var editable = appCompatEditTextClzGetTextFunc.call(this);
             var clz = this.getClass().getName();
             var viewId = this.getId();
             console.log("EditTextClz: " + clz);
             console.log("ViewId: " + viewId);
             console.log("Text: " + Java.cast(editable, charSequenceClz));
-<<<<<<< HEAD
-            printStacks(androidLogClz, exceptionClz, 'androidx.appcompat.widget.AppCompatEditText.getText()');
-            return editable;
-        };
-    }
-
-=======
             var invokeId = Math.random().toString(36).slice( - 8);
         	var executor = this.hashCode();
         	methodInBeat(invokeId, startTime, 'androidx.appcompat.widget.AppCompatEditText.getText()', executor);
             return editable;
         };
     }
->>>>>>> upstream/master
 });

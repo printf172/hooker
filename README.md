@@ -2,6 +2,20 @@
 
 hooker是一个基于frida实现的逆向工具包。为逆向开发人员提供统一化的脚本包管理方式、通杀脚本、自动化生成hook脚本、内存漫游探测activity和service和其他任意对象。
 
+<<<<<<< HEAD
+=======
+# [hooker开源协议](https://github.com/CreditTone/hooker/blob/master/LICENSE.md)
+https://github.com/CreditTone/hooker/blob/master/LICENSE.md
+
+hooker使用[Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)开源协议，协议核心规范如下。
+
+### 1.授权使用者免费使用个人专利
+### 2.使用者必须放置协议说明
+### 3.使用者需要对修改部分声明
+### 4.禁止用作者的名号进行商业广告
+### 5.原作者不承担代码使用后风险
+
+>>>>>>> upstream/master
 
 本项目仅作为学习使用，不参与任何入侵、破解计算机信息系统的行为。如有影响您app信息安全的地方，请立即与我联系删除，谢谢！邮箱：1273568669@qq.com
 
@@ -90,7 +104,11 @@ hooker是一个基于frida实现的逆向工具包。为逆向开发人员提供
 - 提供操作原生AndroidUI功能：你可以./attach每个app目录下的android_ui.js脚本，它提供了通过ViewId、ViewText找到Android原生的View并点击，或者你想强制打开某个Activity（比如某个界面只有会员才能进入，这时候你就可以采用Android"原生代码"打开的方式）。
 
 # 环境部署
+<<<<<<< HEAD
 前言：hooker仅支持在Linux和MacOS下运行，并且现在和将来都不会支持windows操作系统！windows命令行就是垃圾中的垃圾，windows从诞生起的产品定位就不是给专业的计算机人员使用的。基因上它就不具备开发环境的属性，请不要用windows做开发，不要让我鄙视你，好吗？
+=======
+前言：hooker仅支持在Linux和MacOS下运行，并且现在和将来都不会支持windows操作系统！windows做开发是没有灵魂的！
+>>>>>>> upstream/master
 
 ### 1. git clone项目
 ```shell
@@ -370,7 +388,12 @@ frida-kill $HOOKER_DRIVER com.ss.android.ugc.aweme
 在native层跟踪ssl握手并记录CLIENT RANDOM，tcpdump出来的链路层pacp里面的TLS包可以用CLIENT RANDOM记录文件解出来，将在高级篇讲解使用步骤。
 
 ### 9. object_store.js
+<<<<<<< HEAD
 操作ObjectId标识的对象，根据自身分析情况可进行特定的序列化打印、操作对象的私有成员变量。将在高级篇讲解使用步骤。
+=======
+操作ObjectId标识的对象，根据自身分析情况可进行特定的序列化打印、操作对象的私有成员变量。
+实践文章：https://bbs.pediy.com/thread-267245.htm
+>>>>>>> upstream/master
 
 ### 10. hook_RN.js
 对于动态注册的native函数，我们需要用hook_RN.js来分析。强烈建议hook_RN.js用spawn模式启动，启动命令为 ./spawn hook_RN.js
@@ -597,11 +620,21 @@ cp -rf $MY_HOOKER/{your_app_package} $LATEST_HOOKER/
 hooker实战应用
 =================
 
+<<<<<<< HEAD
 # ssl_log链路层离线抓包
 
 # objectId的深度理解和灵活应用
 
 # 内存漫游窥视对象内部数据
+=======
+### ssl_log链路层离线抓包
+
+### objectId的深度理解和灵活应用
+https://bbs.pediy.com/thread-267245.htm
+
+### 内存漫游窥视对象内部数据
+https://bbs.pediy.com/thread-267245.htm
+>>>>>>> upstream/master
 
 # 关于作者
 

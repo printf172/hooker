@@ -4,7 +4,7 @@ function loadDexfile(dexfile) {
     });
 };
 
-loadDexfile('/data/user/0/com.smile.gifmaker/radar.dex');
+loadDexfile('/data/user/0/com.sina.news/radar.dex');
 
 
 function log(str) {
@@ -37,11 +37,7 @@ function object2Json(objectId) {
 	}
 }
 
-<<<<<<< HEAD
 function Object2String(objectId) {
-=======
-function object2String(objectId) {
->>>>>>> upstream/master
 	var radarPropertiesClz = Java.use("gz.radar.objects.ObjectsStore");
 	var obj = radarPropertiesClz.getObject(objectId+"");
 	if (obj) {
@@ -50,19 +46,3 @@ function object2String(objectId) {
 		log("Not found this object.");
 	}
 }
-<<<<<<< HEAD
-=======
-
-function getObject(objectId) {
-	var radarPropertiesClz = Java.use("gz.radar.objects.ObjectsStore");
-	var obj = radarPropertiesClz.getObject(objectId+"");
-	return obj;
-}
-
-
-function getField(javaObject, fieldName) {
-    var X = Java.use("gz.util.X");
-    return X.getField(javaObject, fieldName);
-};
-
->>>>>>> upstream/master
