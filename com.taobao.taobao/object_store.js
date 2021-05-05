@@ -4,7 +4,7 @@ function loadDexfile(dexfile) {
     });
 };
 
-loadDexfile('/data/user/0/com.meicai.mall/radar.dex');
+loadDexfile('/data/user/0/com.taobao.taobao/radar.dex');
 
 
 function log(str) {
@@ -37,11 +37,7 @@ function object2Json(objectId) {
 	}
 }
 
-<<<<<<< HEAD
-function Object2String(objectId) {
-=======
 function object2String(objectId) {
->>>>>>> upstream/master
 	var radarPropertiesClz = Java.use("gz.radar.objects.ObjectsStore");
 	var obj = radarPropertiesClz.getObject(objectId+"");
 	if (obj) {
@@ -50,8 +46,6 @@ function object2String(objectId) {
 		log("Not found this object.");
 	}
 }
-<<<<<<< HEAD
-=======
 
 function getObject(objectId) {
 	var radarPropertiesClz = Java.use("gz.radar.objects.ObjectsStore");
@@ -65,4 +59,3 @@ function getField(javaObject, fieldName) {
     return X.getField(javaObject, fieldName);
 };
 
->>>>>>> upstream/master

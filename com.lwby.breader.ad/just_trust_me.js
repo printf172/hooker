@@ -19,7 +19,7 @@ function loadDexfile(dexfile) {
 var loadedXRadar = false;
 function loadXRadarDexfile() {
     loadedXRadar = true;
-    loadDexfile('/data/user/0/com.meicai.mall/radar.dex');
+    loadDexfile('/data/user/0/com.lwby.breader.ad/radar.dex');
 };
 
 
@@ -202,11 +202,7 @@ Java.perform(function() {
     var X509TrustManagerExtensionsClassCheckServerTrusted = X509TrustManagerExtensionsClass.checkServerTrusted.overload('[Ljava.security.cert.X509Certificate;', 'java.lang.String', 'java.lang.String');
     X509TrustManagerExtensionsClassCheckServerTrusted.implementation = function(certsArr, v1, v2) {
         console.log("android.net.http.X509TrustManagerExtensions.checkServerTrusted('[Ljava.security.cert.X509Certificate;', 'java.lang.String', 'java.lang.String') was hooked!");
-<<<<<<< HEAD
-        return certsArr;
-=======
         return Java.use('java.util.Arrays$ArrayList').$new(certsArr);
->>>>>>> upstream/master
     };
     var NetworkSecurityTrustManagerClass = Java.use('android.security.net.config.NetworkSecurityTrustManager');
     var NetworkSecurityTrustManagerClassCheckPins = NetworkSecurityTrustManagerClass.checkPins.overload('java.util.List');
