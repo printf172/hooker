@@ -45,7 +45,7 @@ function processOkHttp() {
             console.log("com.squareup.okhttp.CertificatePinner.check('java.lang.String', 'java.util.List') was hooked!");
         };
     }else{
-        console.error("没找到com.squareup.okhttp.CertificatePinner类，这是android系统自带的类没找到就算求了。不同系统不一样，不用找了!!!");
+        console.error("没找到com.squareup.okhttp.CertificatePinner类，这是android系统自带的类没找到就算了。不同系统不一样，不用找了!!!");
     }
 
     if (classExists("okhttp3.CertificatePinner")) {
@@ -221,7 +221,7 @@ Java.perform(function() {
     SSLSocketFactoryRapeConstructor.implementation = function(v0, v1, v2, v3, v4, v5) {
         var returnObj = SSLSocketFactoryRapeConstructor.call(this, v0, v1, v2, v3, v4, v5);
         console.log("org.apache.http.conn.ssl.SSLSocketFactory.$init('java.lang.String', 'java.security.KeyStore', 'java.lang.String', 'java.security.KeyStore', 'java.security.SecureRandom', 'org.apache.http.conn.scheme.HostNameResolver') was hooked!");
-        if (Helper.reInitSSLSocketFactory(returnObj, v0, v1, v2, v3, v4, v5)) {
+        if (Helper.reInitSSLSocketFactory(this, v0, v1, v2, v3, v4, v5)) {
             console.log("替换trustmanagers参数成功!");
         }else{
             console.log("替换trustmanagers参数失败!"); 
@@ -234,7 +234,7 @@ Java.perform(function() {
     SSLSocketFactoryGetSocketFactoryMethod.implementation = function() {
         //强制用空的构造方法
         console.log("org.apache.http.conn.ssl.SSLSocketFactory.getSocketFactory() was hooked!");
-        return SSLSocketFactoryEmptyConstructor.call(this);
+        return SSLSocketFactory.$new();
     };
 
     var SSLSocketFactoryIsSecure = SSLSocketFactory.isSecure.overload('java.net.Socket');
