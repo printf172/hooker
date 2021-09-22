@@ -33,7 +33,7 @@ hooker使用[Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)开
 
 ##### [frida版just_trust_me实战测试报告](https://github.com/CreditTone/hooker/blob/master/JUSTTRUSTME.md)
 
-
+##### [disable_sslpinning](#7-disable_sslpinning)
 
 目录
 =================
@@ -57,6 +57,7 @@ hooker使用[Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)开
     * [4. objection](#4-objection)
     * [5. xinitdeploy](#5-xinitdeploy)
     * [6. kill](#6-kill)
+    * [7. disable_sslpinning](#7-disable_sslpinning)
 * [应用工作目录的通杀脚本](#应用工作目录的通杀脚本)
     * [1. url.js](#1-urljs)
     * [2. activity_events.js](#2-activity_eventsjs)
@@ -191,7 +192,7 @@ stephen@ubuntu:~/hooker$ #如果你看到你的adb命令被弹出来了，表示
 ```
 ***
 
-注意：自定义fridaserver端口的开发环境必须走host:post的方式调试，因为usb默认找27042端口。所以请务必[更改本地.hooker_driver文件](#远程frida支持)，否则hooker无法正常工作。
+注意：自定义frida server端口的开发环境必须走host:post的方式调试，因为usb默认找27042端口。所以请务必[更改本地.hooker_driver文件](#远程frida支持)，否则hooker无法正常工作。
 
 ### 6. 部署之后手机的增强功能
 - 1.关闭iptables防火墙，解决部分手机默认防火墙开启的问题
@@ -377,6 +378,13 @@ HOOKER_DRIVER=$(cat ../.hooker_driver)
 frida-kill $HOOKER_DRIVER com.ss.android.ugc.aweme
 ```
 ![](assets/kill.gif)
+
+
+### 7. disable_sslpinning
+快速关闭ssl pinning，此命令基于objection源码实现和[frida版just_trust_me](#11-just_trust_mejs)互补。当just_trust_me失效的时候，可以使用disable_sslpinning。反之，使用[just_trust_me](#11-just_trust_mejs)。
+
+![](assets/disable_sslpinning.gif)
+
 
 # 应用工作目录的通杀脚本
 
@@ -721,6 +729,17 @@ https://bbs.pediy.com/thread-267245.htm
 ### 内存漫游窥视对象内部数据
 https://bbs.pediy.com/thread-267245.htm
 >>>>>>> upstream/master
+
+### 亲测好用的脱壳工具
+https://github.com/CodingGay/BlackDex
+
+https://github.com/GuoQiang1993/Frida-Apk-Unpack
+
+https://github.com/hanbinglengyue/FART
+
+### 通信降级案例（亲测有效）
+https://blog.csdn.net/qq314000558/article/details/105958847
+
 
 # 关于作者
 
